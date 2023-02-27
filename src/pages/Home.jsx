@@ -4,7 +4,7 @@ import { Container } from "@mui/system";
 import React from "react";
 
 // Importing components
-import GetAllProducts from "../api/AllProducts";
+import GetAllProducts from "../components/layout/AllProducts";
 
 const Home = () => {
  return (
@@ -12,7 +12,7 @@ const Home = () => {
    <Container>
     <Typography variant="h1">Welcome to Store Online</Typography>
     <Box sx={{ flexGrow: 1 }} m={5}>
-     <GetAllProducts />
+    <GetAllProducts />
     </Box>
    </Container>
   </Box>
