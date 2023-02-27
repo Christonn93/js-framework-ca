@@ -1,7 +1,7 @@
 import React from "react";
 
 // Importing mui items
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 
 const LoadingAnimation = () => {
  return (

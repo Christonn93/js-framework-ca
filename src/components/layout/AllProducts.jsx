@@ -27,7 +27,7 @@ function GetAllProducts() {
     {data.map((product) => (
      <Grid item xs={2} sm={4}>
       <ProductCard
-        key={product.toString()}
+        key={product.id}
        title={product.title}
        description={product.description}
        imageUrl={product.imageUrl}
