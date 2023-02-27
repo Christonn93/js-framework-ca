@@ -6,7 +6,6 @@ import SingleProduct from "../components/layout/SingleProduct";
 const Product = () => {
   return (
     <Box p={4}>
-        <h1>Product</h1>
         <SingleProduct />
     </Box>
 );
