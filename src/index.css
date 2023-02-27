@@ -31,6 +31,28 @@ nav {
   align-items: center;
 }
 
+
+.footer-title {
+  text-decoration: underline;
+  text-decoration-thickness: 5px; 
+}
+
+/* Contact Container */
+.contact-container {
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+  margin: 15px;
+}
+
+
 /* Loader */
 .loader {
   width: 60px;
