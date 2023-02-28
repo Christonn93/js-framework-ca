@@ -3,9 +3,9 @@ import { Box, Typography } from "@mui/material";
 import ReviewDisplay from "../UI/ReviewDisplay";
 
 const DisplayReview = (data) => {
- const reviewData = data.reviews;
+ const reviewData = data;
 
- if (reviewData.length >= 1) {
+ if (reviewData.length >= 0) {
   return (
    <Box>
     {reviewData.map((i) => (

@@ -1,14 +1,17 @@
 import React from "react";
 
 // Importing mui items
-import { Alert, AlertTitle} from "@mui/material";
+import { Alert, AlertTitle } from "@mui/material";
+import { Box, Container } from "@mui/system";
 
 const ErrorResponse = (props) => {
  return (
-  <Alert severity={props.severity}>
-   <AlertTitle>{props.title}</AlertTitle>
-   <p>{props.content}</p>
-  </Alert>
+  <Box>
+   <Alert severity={props.severity}>
+    <AlertTitle>{props.title}</AlertTitle>
+    <p>{props.content}</p>
+   </Alert>
+  </Box>
  );
 };
 
