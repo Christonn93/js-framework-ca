@@ -2,7 +2,7 @@ import React from "react";
 
 // Importing mui items
 import { Alert, AlertTitle } from "@mui/material";
-import { Box, Container } from "@mui/system";
+import { Box } from "@mui/system";
 
 const ErrorResponse = (props) => {
  return (

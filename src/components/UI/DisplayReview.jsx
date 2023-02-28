@@ -1,11 +1,16 @@
 import { Box, Typography } from "@mui/material";
 
 import ReviewDisplay from "../UI/ReviewDisplay";
+import ErrorResponse from "../UI/ErrorResponse";
 
 const DisplayReview = (data) => {
  const reviewData = data;
 
- if (reviewData.length >= 0) {
+ if (reviewData === "undefined") {
+    return <ErrorResponse severity="error" title="Oh NO!" content="Obs. We could not load your data. Please try again later" />;
+   }
+
+ if (reviewData.length >= 1) {
   return (
    <Box>
     {reviewData.map((i) => (

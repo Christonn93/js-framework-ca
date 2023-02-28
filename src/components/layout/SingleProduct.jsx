@@ -32,7 +32,7 @@ const SingleProduct = () => {
   return <ErrorResponse severity="error" title="Oh NO!" content="Obs. We could not load your data. Please try again later" />;
  }
 
- if (!data.map) {
+ if (data.map) {
   return <ErrorResponse severity="error" title="Oh NO!" content="Obs. We could not load your data. Please try again later" />;
  }
 
