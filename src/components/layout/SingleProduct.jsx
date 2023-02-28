@@ -18,6 +18,10 @@ const SingleProduct = () => {
  let { id } = useParams();
  const { data, isLoading, isError } = ApiHook(`https://api.noroff.dev/api/v1/online-shop/${id}`);
 
+ // Setting variables for displaying data
+ const price = PriceDisplay(data);
+ const review = DisplayReview(data);
+
  // Displaying loading div
  if (isLoading) {
   return <LoadingAnimation />;
@@ -27,10 +31,6 @@ const SingleProduct = () => {
  if (isError) {
   return <ErrorResponse severity="error" title="Oh NO!" content="Obs. We could not load your data. Please try again later" />;
  }
-
- // Setting variables for displaying data
- const price = PriceDisplay(data);
- const review = DisplayReview(data);
 
  // What is displaying
  return (
