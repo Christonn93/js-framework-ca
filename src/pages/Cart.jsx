@@ -1,12 +1,20 @@
 // Importing UI elements and react elements
-import { Box } from "@mui/material";
-import React from 'react'
+import { Box, Button, Typography } from "@mui/material";
+import { Container } from "@mui/system";
+import React from "react";
 const Cart = () => {
-  return (
-    <Box p={4}>
-        <h1>Cart</h1>
-    </Box>
-);
-}
+ return (
+  <Container>
+   <Box p={4}>
+    <Typography variant="h1">Your cart</Typography>
+    <Box></Box>
+    <form>
 
-export default Cart
+      <Button variant="contained">Purchase</Button>
+    </form>
+   </Box>
+  </Container>
+ );
+};
+
+export default Cart;
