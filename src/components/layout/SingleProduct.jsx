@@ -85,7 +85,7 @@ const SingleProduct = () => {
       <Grid item xs={12}>
        {review.map((data) => (
         <ReviewDisplay name={data.username} rating={data} body={data.description} />
-       ))}
+       ))};
       </Grid>
      </Grid>
     </Grid>
