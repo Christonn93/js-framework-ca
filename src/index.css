@@ -19,19 +19,38 @@ code {
 }
 
 
+/* Header */
 header {
   display: flex;
   justify-content: space-between;
   padding: 15px;
 }
 
+/* Navigation */
 nav {
   display: flex;
   gap: 15px;
   align-items: center;
 }
 
+/* Price display product */
+.price-display {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
+.price-display li p {
+  padding: 0;
+  margin: 0;
+}
+
+.price-off {
+  text-decoration: line-through;
+  color: gray;
+}
+
+/* Footer */
 .footer-title {
   text-decoration: underline;
   text-decoration-thickness: 5px; 

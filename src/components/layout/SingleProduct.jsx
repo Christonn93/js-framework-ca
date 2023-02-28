@@ -3,8 +3,10 @@ import * as React from "react";
 import { useParams } from "react-router-dom";
 
 // Importing mui items
-import { Box, IconButton, Grid, Tooltip, Button, Container } from "@mui/material";
+import { Box, Grid, Button, Container, Typography } from "@mui/material";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 // Importing components
 import ErrorResponse from "../utils/ErrorResponse";
@@ -22,41 +24,75 @@ const SingleProduct = () => {
  if (isError) {
   return <ErrorResponse severity="error" title="Oh NO!" content="Obs. We could not load your data. Please try again later" />;
  }
+ let priceDisplay;
 
- console.log(data);
+ const discountProduct = (
+  <ul className="price-display">
+   <li>
+    <p>% off</p>
+   </li>
+   <li>
+    <p><AttachMoneyIcon fontSize="20px"/>{data.discountedPrice}</p>
+   </li>
+   <li>
+    <p className="price-off"><AttachMoneyIcon fontSize="20px"/>{data.price}</p>
+   </li>
+  </ul>
+ );
 
- let num1 = Number(data.discountedPrice) / 100;
- let num2 = Number(data.price);
- let totalValue = num1 - num1 * num2;
- console.log(totalValue.toFixed(2));
+ const noDiscountProduct = <p> <AttachMoneyIcon fontSize="20px"/> {data.price}</p>;
+
+ if (data.discountPrice >= data.price) {
+  return priceDisplay === discountProduct;
+ }
+
+ if (data.discountPrice <= data.price) {
+  return priceDisplay === noDiscountProduct;
+ }
 
  return (
   <Box sx={{ flexGrow: 1 }} m={5}>
-  <Container>
-   <Grid container spacing={2}>
-    <Grid item xs={4}>
-     <h1>{data.title}</h1>
-     <Box boxShadow={6} width={"300px"}>
-      <img src={data.imageUrl} alt={data.imageUrl} loading="lazy" width={"100%"} />
-     </Box>
+   <Container>
+    <Grid container spacing={2}>
+     <Grid item xs={6}>
+      <Grid container direction="column" spacing={2}>
+       <Grid item>
+        <Typography variant="h2">{data.title}</Typography>
+       </Grid>
+       <Grid item>
+        <img src={data.imageUrl} alt={data.imageUrl} loading="lazy" width={"300px"} />
+       </Grid>
+      </Grid>
+     </Grid>
+     <Grid item xs={6}>
+      <Grid container direction="column" spacing={2}>
+       <Grid item>
+        <Typography variant="h6">Description</Typography>
+        <Typography variant="body1">{data.description}</Typography>
+        <Typography variant="body1" marginTop={2}>
+         Lorem ipsum dolor sit amet, nec ne delectus signiferumque. Ei pri porro singulis, no quot saperet facilisis sed, no instructior intellegebat usu. Id mei ullum graece oportere, vis at
+         expetendis signiferumque, sint volumus mel cu. Quodsi senserit aliquando ne pri, vim gubergren percipitur ei.
+        </Typography>
+       </Grid>
+       <Grid item>
+        <Grid container alignItems="center" spacing={2}>
+         <Grid item>{priceDisplay}</Grid>
+         <Grid item>
+          <Button variant="contained" color="primary">
+           <AddShoppingCartOutlinedIcon />
+           Add to cart
+          </Button>
+         </Grid>
+         <Grid item>
+          <Button variant="outlined" color="primary">
+           <FavoriteIcon />
+          </Button>
+         </Grid>
+        </Grid>
+       </Grid>
+      </Grid>
+     </Grid>
     </Grid>
-    <Grid item xs={8}>
-     <p>{data.description}</p>
-     <span>{data.price}</span>
-     <br />
-     <span>{data.rating}</span>
-     <br />
-    </Grid>
-    <Grid item xs={4}>
-     <Tooltip title="Add to cart">
-      <Button>
-       <IconButton color="success">
-        <AddShoppingCartOutlinedIcon />
-       </IconButton>
-      </Button>
-     </Tooltip>
-    </Grid>
-   </Grid>
    </Container>
   </Box>
  );
