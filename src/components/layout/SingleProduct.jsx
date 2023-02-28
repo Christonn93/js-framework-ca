@@ -12,29 +12,7 @@ import ErrorResponse from "../UI/ErrorResponse";
 import LoadingAnimation from "../UI/LoadingAnimation";
 import ApiHook from "../../api/ApiHook";
 import PriceDisplay from "../UI/PriceDisplay";
-import ReviewDisplay from "../UI/ReviewDisplay";
-
-const displayReview = (data) => {
- const review = data.reviews;
-
- console.log(review);
-
- if (review.length >= 1) {
-  return (
-   <>
-    {review.map((index) => (
-     <ReviewDisplay key={index.id} name={index.username} rating={index.rating} body={index.description} />
-    ))}
-   </>
-  );
- } else {
-  return (
-   <>
-    <Typography variant="body1">There is no reviews on this product</Typography>
-   </>
-  );
- }
-};
+import DisplayReview from "../UI/DisplayReview";
 
 const SingleProduct = () => {
  let { id } = useParams();
@@ -52,6 +30,7 @@ const SingleProduct = () => {
 
  // Setting variables for displaying data
  const price = PriceDisplay(data);
+ const review = DisplayReview(data);
 
  // What is displaying
  return (
@@ -102,7 +81,7 @@ const SingleProduct = () => {
        <Typography variant="h4">Reviews</Typography>
       </Grid>
       <Grid item xs={12}>
-        {displayReview(data)}
+       {review}
       </Grid>
      </Grid>
     </Grid>
