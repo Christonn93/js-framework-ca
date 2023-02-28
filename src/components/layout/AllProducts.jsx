@@ -5,9 +5,9 @@ import * as React from "react";
 import { Box, Grid } from "@mui/material";
 
 // Importing components
-import ErrorResponse from "../utils/ErrorResponse";
-import LoadingAnimation from "../utils/LoadingAnimation";
-import ProductCard from "../assets/ProductCards";
+import ErrorResponse from "../UI/ErrorResponse";
+import LoadingAnimation from "../UI/LoadingAnimation";
+import ProductCard from "../UI/ProductCards";
 import ApiHook from "../../api/ApiHook";
 
 function GetAllProducts() {
@@ -29,9 +29,8 @@ function GetAllProducts() {
   <Box sx={{ flexGrow: 1 }} m={5}>
    <Grid container spacing={{ xs: 1, md: 2, lg: 4 }} columns={15} justifyContent="center" p={5} rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
     {data.map((product) => (
-     <Grid item xs={2} sm={4}>
+     <Grid item xs={2} sm={4} key={product.id}>
       <ProductCard
-       key={product.id}
        title={product.title}
        description={product.description}
        imageUrl={product.imageUrl}

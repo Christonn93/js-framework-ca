@@ -8,11 +8,33 @@ import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutl
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 // Importing components
-import ErrorResponse from "../utils/ErrorResponse";
-import LoadingAnimation from "../utils/LoadingAnimation";
+import ErrorResponse from "../UI/ErrorResponse";
+import LoadingAnimation from "../UI/LoadingAnimation";
 import ApiHook from "../../api/ApiHook";
-import PriceDisplay from "../utils/PriceDisplay";
-import ReviewDisplay from "../utils/ReviewDisplay";
+import PriceDisplay from "../UI/PriceDisplay";
+import ReviewDisplay from "../UI/ReviewDisplay";
+
+const displayReview = (data) => {
+ const review = data.reviews;
+
+ console.log(review);
+
+ if (review.length >= 1) {
+  return (
+   <>
+    {review.map((index) => (
+     <ReviewDisplay key={index.id} name={index.username} rating={index.rating} body={index.description} />
+    ))}
+   </>
+  );
+ } else {
+  return (
+   <>
+    <Typography variant="body1">There is no reviews on this product</Typography>
+   </>
+  );
+ }
+};
 
 const SingleProduct = () => {
  let { id } = useParams();
@@ -30,9 +52,6 @@ const SingleProduct = () => {
 
  // Setting variables for displaying data
  const price = PriceDisplay(data);
- const review = data.reviews;
-
- console.log(review);
 
  // What is displaying
  return (
@@ -83,9 +102,7 @@ const SingleProduct = () => {
        <Typography variant="h4">Reviews</Typography>
       </Grid>
       <Grid item xs={12}>
-       {review.map((data) => (
-        <ReviewDisplay name={data.username} rating={data} body={data.description} />
-       ))};
+        {displayReview(data)}
       </Grid>
      </Grid>
     </Grid>

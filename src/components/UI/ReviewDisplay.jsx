@@ -3,7 +3,7 @@ import { Card, CardActionArea, Typography, CardContent, Chip } from "@mui/materi
 
 const ReviewDisplay = (props) => {
  return (
-  <Card sx={{ maxWidth: 345 }} key={props.key}>
+  <Card sx={{ maxWidth: 345 }} key={props.id}>
    <CardActionArea>
     <CardContent>
     <Chip label={props.rating} color="success" />

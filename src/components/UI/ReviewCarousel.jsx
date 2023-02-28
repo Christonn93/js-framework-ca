@@ -6,7 +6,7 @@ import Carousel from "react-material-ui-carousel";
 import { Grid } from "@mui/material";
 
 // Importing components
-import ProductCard from "../assets/ProductCards";
+import ProductCard from "./ProductCards";
 
 const Cards = (data) => {
  return (
