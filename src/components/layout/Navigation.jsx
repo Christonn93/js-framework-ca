@@ -9,28 +9,27 @@ import CartIcon from "../assets/CartIcon";
 import { Button, Tooltip, IconButton } from "@mui/material";
 
 const Navigation = () => {
-  return (
-    <Stack direction="row" spacing={2} alignItems="center">
-     <Link to="/">
-      <Tooltip title="Home">
-       <Button>Home</Button>
-      </Tooltip>
-     </Link>
-  
-     <Link to="/contact">
-      <Tooltip title="Contact us">
-       <Button>Contact</Button>
-      </Tooltip>
-     </Link>
-     <Link to="/cart">
-      <Tooltip title="Your cart">
-       <IconButton color="success">
-        <CartIcon />
-       </IconButton>
-      </Tooltip>
-     </Link>
-    </Stack>
-   );
-  };
+ return (
+  <Stack direction="row" spacing={2} alignItems="center">
+   <Link to="/">
+    <Tooltip title="Home">
+     <Button>Home</Button>
+    </Tooltip>
+   </Link>
+   <Link to="/contact">
+    <Tooltip title="Contact us">
+     <Button>Contact</Button>
+    </Tooltip>
+   </Link>
+   <Link to="/cart">
+    <Tooltip title="Your cart">
+     <IconButton color="success">
+      <CartIcon />
+     </IconButton>
+    </Tooltip>
+   </Link>
+  </Stack>
+ );
+};
 
-export default Navigation
+export default Navigation;

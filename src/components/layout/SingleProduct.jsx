@@ -6,59 +6,44 @@ import { useParams } from "react-router-dom";
 import { Box, Grid, Button, Container, Typography } from "@mui/material";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 // Importing components
 import ErrorResponse from "../utils/ErrorResponse";
 import LoadingAnimation from "../utils/LoadingAnimation";
 import ApiHook from "../../api/ApiHook";
+import PriceDisplay from "../utils/PriceDisplay";
+import ReviewDisplay from "../utils/ReviewDisplay";
 
 const SingleProduct = () => {
  let { id } = useParams();
  const { data, isLoading, isError } = ApiHook(`https://api.noroff.dev/api/v1/online-shop/${id}`);
 
+ // Displaying loading div
  if (isLoading) {
   return <LoadingAnimation />;
  }
 
+ // Displaying error for the user if something is wrong
  if (isError) {
   return <ErrorResponse severity="error" title="Oh NO!" content="Obs. We could not load your data. Please try again later" />;
  }
- let priceDisplay;
 
- const discountProduct = (
-  <ul className="price-display">
-   <li>
-    <p>% off</p>
-   </li>
-   <li>
-    <p><AttachMoneyIcon fontSize="20px"/>{data.discountedPrice}</p>
-   </li>
-   <li>
-    <p className="price-off"><AttachMoneyIcon fontSize="20px"/>{data.price}</p>
-   </li>
-  </ul>
- );
+ // Setting variables for displaying data
+ const price = PriceDisplay(data);
+ const review = data.reviews;
 
- const noDiscountProduct = <p> <AttachMoneyIcon fontSize="20px"/> {data.price}</p>;
+ console.log(review);
 
- if (data.discountPrice >= data.price) {
-  return priceDisplay === discountProduct;
- }
-
- if (data.discountPrice <= data.price) {
-  return priceDisplay === noDiscountProduct;
- }
-
+ // What is displaying
  return (
   <Box sx={{ flexGrow: 1 }} m={5}>
    <Container>
     <Grid container spacing={2}>
+     <Grid item xs={12}>
+      <Typography variant="h2">{data.title}</Typography>
+     </Grid>
      <Grid item xs={6}>
       <Grid container direction="column" spacing={2}>
-       <Grid item>
-        <Typography variant="h2">{data.title}</Typography>
-       </Grid>
        <Grid item>
         <img src={data.imageUrl} alt={data.imageUrl} loading="lazy" width={"300px"} />
        </Grid>
@@ -66,21 +51,22 @@ const SingleProduct = () => {
      </Grid>
      <Grid item xs={6}>
       <Grid container direction="column" spacing={2}>
-       <Grid item>
-        <Typography variant="h6">Description</Typography>
+       <Grid item marginBottom={3}>
+        <Typography variant="h4" marginBottom={2}>
+         Description:
+        </Typography>
         <Typography variant="body1">{data.description}</Typography>
         <Typography variant="body1" marginTop={2}>
          Lorem ipsum dolor sit amet, nec ne delectus signiferumque. Ei pri porro singulis, no quot saperet facilisis sed, no instructior intellegebat usu. Id mei ullum graece oportere, vis at
-         expetendis signiferumque, sint volumus mel cu. Quodsi senserit aliquando ne pri, vim gubergren percipitur ei.
+         expetendis signiferumque, sint volumus mel cu. Quodsi senserit aliquando ne pri, vim gubergren percipitur ei. (added this to fill out the page a bit more so the design would work good)
         </Typography>
        </Grid>
        <Grid item>
         <Grid container alignItems="center" spacing={2}>
-         <Grid item>{priceDisplay}</Grid>
+         <Grid item>{price}</Grid>
          <Grid item>
           <Button variant="contained" color="primary">
            <AddShoppingCartOutlinedIcon />
-           Add to cart
           </Button>
          </Grid>
          <Grid item>
@@ -90,6 +76,16 @@ const SingleProduct = () => {
          </Grid>
         </Grid>
        </Grid>
+      </Grid>
+     </Grid>
+     <Grid item xs={12}>
+      <Grid item xs={12}>
+       <Typography variant="h4">Reviews</Typography>
+      </Grid>
+      <Grid item xs={12}>
+       {review.map((data) => (
+        <ReviewDisplay name={data.username} rating={data} body={data.description} />
+       ))}
       </Grid>
      </Grid>
     </Grid>

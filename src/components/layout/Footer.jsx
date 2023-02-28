@@ -14,10 +14,9 @@ const Footer = () => {
   <footer>
    <Box p="5" backgroundColor={"#cfe2f3"}>
     <Grid container spacing={3}>
-     <Grid xs textAlign={"center"}></Grid>
-     <Grid xs={6} textAlign={"center"}>
+     <Grid item xs textAlign={"center"}></Grid>
+     <Grid item xs={6} textAlign={"center"}>
       <h2 className="footer-title">About us</h2>
-
       <Link to={"/contact"}>
        <p>Contact</p>
       </Link>
@@ -26,7 +25,7 @@ const Footer = () => {
       </Link>
       <p>Copyright Store Online</p>
      </Grid>
-     <Grid xs textAlign={"center"}></Grid>
+     <Grid item xs textAlign={"center"}></Grid>
     </Grid>
    </Box>
   </footer>
