@@ -1,17 +1,25 @@
 // Importing React elements
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
+import styled from "styled-components";
 
-import Footer from './Footer';
-import Header from './Header';
+// Importing components
+import Footer from "./Footer";
+import Header from "./Header";
+
+const Div = styled.div`
+ display: grid;
+ grid-template-rows: auto 1fr auto;
+ height: 100vh;
+`;
 
 const Layout = () => {
-  return (
-    <div className='PageLayout'>
-     <Header />
-     <Outlet />
-     <Footer />
-    </div>
-   );
-  };
+ return (
+  <Div>
+   <Header />
+   <Outlet />
+   <Footer />
+  </Div>
+ );
+};
 
-export default Layout
+export default Layout;

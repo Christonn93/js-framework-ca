@@ -12,27 +12,6 @@ code {
     monospace;
 }
 
-.PageLayout {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  height: 100vh;
-}
-
-
-/* Header */
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px;
-}
-
-/* Navigation */
-nav {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
 /* Price display product */
 .price-display {
   list-style: none;
@@ -50,27 +29,11 @@ nav {
   color: gray;
 }
 
-/* Footer */
-.footer-title {
-  text-decoration: underline;
-  text-decoration-thickness: 5px; 
-}
-
 /* Contact Container */
 .contact-container {
   border: 1px solid black;
   border-radius: 15px;
 }
-
-/* Form */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 15px;
-  margin: 15px;
-}
-
 
 /* Loader */
 .loading-box {

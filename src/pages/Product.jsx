@@ -1,14 +1,18 @@
-// Importing UI elements and react elements
-import { Box } from "@mui/material";
+// Importing React components
 import * as React from "react";
+
+// Importing MUI components
+import { Box } from "@mui/material";
+
+// Importing custom components
 import SingleProduct from "../components/layout/SingleProduct";
 
 const Product = () => {
-  return (
-    <Box p={4}>
-        <SingleProduct />
-    </Box>
-);
-}
+ return (
+  <Box p={4}>
+   <SingleProduct />
+  </Box>
+ );
+};
 
-export default Product
+export default Product;

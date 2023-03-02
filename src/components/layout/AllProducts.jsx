@@ -25,8 +25,8 @@ function GetAllProducts() {
  }
 
  if (!data.map) {
-    return <ErrorResponse severity="error" title="Oh NO!" content="Obs. We could not load your data. Please try again later" />;
-   }
+  return <ErrorResponse severity="error" title="Oh NO!" content="Obs. We could not load your data. Please try again later" />;
+ }
 
  // What is displaying
  return (

@@ -1,7 +1,10 @@
-// Importing UI elements and react elements
+// Importing react components
+import React from "react";
+
+// Importing MUI components
 import { Box, Button, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import React from "react";
+
 const Cart = () => {
  return (
   <Container>
@@ -9,8 +12,7 @@ const Cart = () => {
     <Typography variant="h1">Your cart</Typography>
     <Box></Box>
     <form>
-
-      <Button variant="contained">Purchase</Button>
+     <Button variant="contained">Purchase</Button>
     </form>
    </Box>
   </Container>

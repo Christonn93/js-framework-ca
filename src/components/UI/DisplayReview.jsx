@@ -7,8 +7,8 @@ const DisplayReview = (data) => {
  const reviewData = data;
 
  if (reviewData === "undefined") {
-    return <ErrorResponse severity="error" title="Oh NO!" content="Obs. We could not load your data. Please try again later" />;
-   }
+  return <ErrorResponse severity="error" title="Oh NO!" content="Obs. We could not load your data. Please try again later" />;
+ }
 
  if (reviewData.length >= 1) {
   return (

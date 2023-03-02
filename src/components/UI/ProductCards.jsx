@@ -40,7 +40,7 @@ const ProductCard = (props) => {
       sx={{ backgroundColor: "transparent" }}
       position="top"
       actionIcon={
-       <Alert variant="filled" icon={false} >
+       <Alert variant="filled" icon={false}>
         ON SALE
        </Alert>
       }

@@ -6,7 +6,7 @@ const ReviewDisplay = (props) => {
   <Card sx={{ maxWidth: 345 }} key={props.id}>
    <CardActionArea>
     <CardContent>
-    <Chip label={props.rating} color="success" />
+     <Chip label={props.rating} color="success" />
      <Typography gutterBottom variant="h5" component="div">
       {props.name}
      </Typography>

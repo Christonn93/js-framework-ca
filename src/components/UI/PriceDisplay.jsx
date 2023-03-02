@@ -40,9 +40,9 @@ const PriceDisplay = (data) => {
 
  // Conditional rendering
  if (data.discountedPrice >= data.price) {
-    priceDisplay = noDiscountProduct;
+  priceDisplay = noDiscountProduct;
  } else {
-    priceDisplay = discountProduct;
+  priceDisplay = discountProduct;
  }
 
  return priceDisplay;

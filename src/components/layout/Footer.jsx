@@ -1,6 +1,7 @@
 // Importing react elements
 import * as React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 // Importing MUI components
 import { Grid } from "@mui/material";
@@ -9,6 +10,11 @@ import { Box } from "@mui/system";
 // Importing components
 import Logo from "../../images/color-noBG.png";
 
+const Title = styled.h2`
+ text-decoration: underline;
+ text-decoration-thickness: 5px;
+`;
+
 const Footer = () => {
  return (
   <footer>
@@ -16,7 +22,7 @@ const Footer = () => {
     <Grid container spacing={3}>
      <Grid item xs textAlign={"center"}></Grid>
      <Grid item xs={6} textAlign={"center"}>
-      <h2 className="footer-title">About us</h2>
+      <Title>About us</Title>
       <Link to={"/contact"}>
        <p>Contact</p>
       </Link>
