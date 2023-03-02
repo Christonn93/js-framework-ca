@@ -19,8 +19,8 @@ const Line = styled.hr`
 
 const Home = () => {
  return (
-  <Box p={4}>
-   <Container>
+  <Container maxWidth="lg">
+   <Box p={4}>
     <Typography variant="h1" align="center">
      Welcome to Store Online
     </Typography>
@@ -37,8 +37,8 @@ const Home = () => {
     <Box sx={{ flexGrow: 1 }} m={5}>
      <GetAllProducts />
     </Box>
-   </Container>
-  </Box>
+   </Box>
+  </Container>
  );
 };
 

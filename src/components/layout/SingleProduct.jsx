@@ -52,13 +52,13 @@ const SingleProduct = () => {
  return (
   <Box sx={{ flexGrow: 1 }} m={5}>
    <Container>
-    <Grid container spacing={2}>
+    <Grid container spacing={2} columns={{xs: 1, md: 10, lg: 12}} order={{ xs: 1, sm: 2 }} justifyContent={"center"}>
      <Grid item xs={12}>
       <Typography variant="h2">{data.title}</Typography>
      <Line />
      <Typography variant="subtitle2">Category: {data.tags.join(', ')}</Typography>
      </Grid>
-     <Grid item xs={6}>
+     <Grid item xs={6} order={{ xs: 3, sm: 2 }}>
       <Grid container direction="column" spacing={2}>
        <Grid item marginBottom={3}>
         <Typography variant="h5" marginBottom={2}>
@@ -91,15 +91,15 @@ const SingleProduct = () => {
       </Grid>
      </Grid>
 
-     <Grid item xs={6}>
+     <Grid item xs={6} order={{ xs: 2, sm: 2 }}>
       <Grid container direction="column" spacing={2} alignContent="center">
        <Grid item>
         <img src={data.imageUrl} alt={data.imageUrl} loading="lazy" width={"300px"} className="product-image" />
        </Grid>
       </Grid>
      </Grid>
+     <Grid item xs={12} order={{ xs: 4, sm: 2 }}>
      <Line />
-     <Grid item xs={12}>
       <Grid item xs={12}>
        <Typography variant="h4">Reviews</Typography>
       </Grid>

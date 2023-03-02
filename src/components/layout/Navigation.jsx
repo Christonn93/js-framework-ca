@@ -11,7 +11,7 @@ import { Button, Tooltip, IconButton } from "@mui/material";
 
 const Navigation = () => {
  return (
-  <Stack direction="row" spacing={2} alignItems="center">
+  <Stack direction={{sx: "column", sm: "column", md: "column", lg: "row"}} spacing={{sm: 1, md: 1, lg: 2}} alignItems="center">
    <Link to="/">
     <Tooltip title="Home">
      <Button>Home</Button>

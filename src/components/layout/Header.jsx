@@ -14,14 +14,19 @@ const HeaderElement = styled.header`
  display: flex;
  justify-content: space-between;
  padding: 15px;
+ flex-wrap: wrap;
 `;
+
+const CompanyLogo = styled.img`
+    height: clamp(50px, 80px, 150px);
+`
 
 const Header = () => {
  return (
   <Box backgroundColor={"#cfe2f3"}>
    <HeaderElement>
     <Link to="/">
-     <img src={Logo} alt="Logo" loading="lazy" height={150} />
+     <CompanyLogo src={Logo} alt="Logo" loading="lazy" />
     </Link>
     <Navigation p={5} />
    </HeaderElement>

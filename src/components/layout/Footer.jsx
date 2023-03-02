@@ -15,6 +15,11 @@ const Title = styled.h2`
  text-decoration-thickness: 5px;
 `;
 
+const CompanyLogo = styled.img`
+    max-height: clamp(50px, 80px, 150px);
+`
+
+
 const Footer = () => {
  return (
   <footer>
@@ -27,7 +32,7 @@ const Footer = () => {
        <p>Contact</p>
       </Link>
       <Link to="/">
-       <img src={Logo} alt="Logo" loading="lazy" height={150} />
+       <CompanyLogo src={Logo} alt="Logo" loading="lazy" />
       </Link>
       <p>Copyright Store Online</p>
      </Grid>
