@@ -17,7 +17,7 @@ const Form = styled.form`
 const Contact = () => {
  return (
   <Box p={4}>
-   <Container className="contact-container" boxShadow="outline">
+   <Container className="contact-container">
     <h1>Contact us</h1>
     <Form>
      <TextField label="First name" fullWidth type="text" name="name" className="form-input" />

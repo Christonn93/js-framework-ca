@@ -1,8 +1,28 @@
 import React from "react";
+import styled from "styled-components";
 
 // Importing mui items
-import { Chip } from "@mui/material";
+import { Chip, Box } from "@mui/material";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+
+const P = styled.p`
+ margin: 0;
+ padding: 0;
+ font-weight: bold;
+`;
+
+const Old = styled.p`
+ margin: 0;
+ padding: 0;
+ font-size: small;
+ color: red;
+`;
+
+const Small = styled.p`
+ margin: 0;
+ padding: 0;
+ font-size: small;
+`;
 
 const PriceDisplay = (data) => {
  // Calculating discount price
@@ -12,28 +32,37 @@ const PriceDisplay = (data) => {
 
  // Display if there is a discount price
  const discountProduct = (
-  <ul className="price-display">
-   <li>
-    <Chip label={discountPercentage + "% off"} color="success"></Chip>
-   </li>
-   <li>
-    <p>
-     {data.discountedPrice} <AttachMoneyIcon fontSize="20px" />
-    </p>
-   </li>
-   <li>
-    <p className="price-off">
-     {data.price} <AttachMoneyIcon fontSize="20px" />
-    </p>
-   </li>
-  </ul>
+  <Box>
+   <Old>
+    <del>
+     {data.price}
+     <AttachMoneyIcon fontSize="20px" />
+    </del>
+    <span>
+     <Chip label={discountPercentage + "% off"} color="success" size="small" variant="outlined"></Chip>
+    </span>
+   </Old>
+   <P>
+    {data.discountedPrice}
+    <AttachMoneyIcon fontSize="20px" />
+   </P>
+   <Small>
+    <i>(Additional tax may apply on checkout)</i>
+   </Small>
+  </Box>
  );
 
  // Display if there is not discount price
  const noDiscountProduct = (
-  <p>
-   <AttachMoneyIcon fontSize="20px" /> {data.price}
-  </p>
+  <Box>
+   <P>
+    {data.price}
+    <AttachMoneyIcon fontSize="20px" />
+   </P>
+   <Small>
+    <i>(Additional tax may apply on checkout)</i>
+   </Small>
+  </Box>
  );
 
  let priceDisplay;

@@ -1,71 +1,111 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 // Importing mui elements
-import { Card, CardContent, CardMedia, IconButton, Typography, Stack, Tooltip, Button, ImageListItemBar, ImageListItem, Alert } from "@mui/material";
+import { IconButton, Typography, Tooltip, Button, ButtonGroup, Box } from "@mui/material";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 
-const ProductCard = (props) => {
- if (props.discountPrice >= props.price) {
-  return (
-   <Card sx={{ maxWidth: 345 }}>
-    <CardMedia component="img" alt="green iguana" height="140" image={props.imageUrl} />
-    <CardContent>
-     <Typography gutterBottom variant="h5" component="div">
-      {props.title}
-     </Typography>
-    </CardContent>
-    <Stack direction="row" spacing={2} alignItems="center" justifyContent={"center"} marginBottom={2}>
-     <Link to={props.productPath}>
-      <Tooltip title="View product">
-       <Button>View product</Button>
-      </Tooltip>
-     </Link>
-     <Tooltip title="Add to cart">
-      <IconButton color="success">
-       <AddShoppingCartOutlinedIcon />
-      </IconButton>
-     </Tooltip>
-    </Stack>
-   </Card>
-  );
+// Importing price props
+import PriceDisplay from "./PriceDisplay";
+import { Container } from "@mui/system";
+
+const ItemCard = styled.div`
+ height: 100%;
+ border: 1px solid black;
+ border-radius: 10px;
+ filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.532));
+ overflow: hidden;
+`;
+
+const ItemImage = styled.div`
+ height: 200px;
+ border-radius: 0;
+ position: relative;
+ margin-bottom: 15px;
+
+ img {
+  width: 100%;
+  height: 100%;
  }
+`;
+
+const ProductInfo = styled.div`
+ display: flex;
+ flex-direction: column;
+ gap: 15px;
+ margin: 15px 0;
+ height: 100%;
+`;
+
+const Sale = styled.span`
+position: absolute;
+top: 0;
+background-color: red;
+height: auto;
+`
+
+const ProductCard = (props) => {
+ const price = PriceDisplay(props.data);
 
  if (props.discountPrice <= props.price) {
   return (
-   <Card sx={{ maxWidth: 345 }}>
-    <ImageListItem key={props.id}>
-     <CardMedia component="img" alt="green iguana" height="140" image={props.imageUrl} />
-     <ImageListItemBar
-      sx={{ backgroundColor: "transparent" }}
-      position="top"
-      actionIcon={
-       <Alert variant="filled" icon={false}>
-        ON SALE
-       </Alert>
-      }
-      actionPosition="left"
-     />
-    </ImageListItem>
+   <ItemCard>
+    <ItemImage>
+     <img src={props.imageUrl} alt="product" loading="lazy" />
+     <Sale>Sale</Sale>
+    </ItemImage>
+    <Container>
+     <ProductInfo>
+      <Typography variant="h4">{props.title}</Typography>
+      <Typography variant="body2">{price}</Typography>
+     </ProductInfo>
+     <Box Container marginBottom={2}>
+      <ButtonGroup disableElevation variant="contained" aria-label="Disabled elevation buttons">
+       <Link to={props.productPath}>
+        <Tooltip title="View product">
+         <Button>View product</Button>
+        </Tooltip>
+       </Link>
 
-    <CardContent>
-     <Typography gutterBottom variant="h5" component="div">
-      {props.title}
-     </Typography>
-    </CardContent>
-    <Stack direction="row" spacing={2} alignItems="center" justifyContent={"center"} marginBottom={2}>
-     <Link to={props.productPath}>
-      <Tooltip title="View product">
-       <Button>View product</Button>
-      </Tooltip>
-     </Link>
-     <Tooltip title="Add to cart">
-      <IconButton color="success">
-       <AddShoppingCartOutlinedIcon />
-      </IconButton>
-     </Tooltip>
-    </Stack>
-   </Card>
+       <Tooltip title="Add to cart">
+        <IconButton color="success">
+         <AddShoppingCartOutlinedIcon />
+        </IconButton>
+       </Tooltip>
+      </ButtonGroup>
+     </Box>
+    </Container>
+   </ItemCard>
+  );
+ } else {
+  return (
+   <ItemCard>
+    <ItemImage>
+     <img src={props.imageUrl} alt="product" loading="lazy" />
+    </ItemImage>
+    <Container>
+     <ProductInfo>
+      <Typography variant="h4">{props.title}</Typography>
+      <Typography variant="body2">{price}</Typography>
+     </ProductInfo>
+     <Box Container marginBottom={2}>
+      <ButtonGroup disableElevation variant="contained" aria-label="Disabled elevation buttons">
+       <Link to={props.productPath}>
+        <Tooltip title="View product">
+         <Button>View product</Button>
+        </Tooltip>
+       </Link>
+
+       <Tooltip title="Add to cart">
+        <IconButton color="success">
+         <AddShoppingCartOutlinedIcon />
+        </IconButton>
+       </Tooltip>
+      </ButtonGroup>
+     </Box>
+    </Container>
+   </ItemCard>
   );
  }
 };
