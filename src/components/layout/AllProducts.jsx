@@ -31,9 +31,9 @@ function GetAllProducts() {
  // What is displaying
  return (
   <Box sx={{ flexGrow: 1 }} m={5}>
-   <Grid container spacing={{ xs: 1, md: 2, lg: 4 }} columns={{xs: 1, md: 2, lg: 15,}} justifyContent="center" p={5} rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+   <Grid container spacing={{ xs: 1, md: 2, lg: 4 }} columns={{xs: 1, md: 2, lg: 15,}} justifyContent="center" rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
     {data.map((product) => (
-     <Grid item xs={2} sm={5} key={product.id}>
+     <Grid item xs={4} sm={5} key={product.id}>
       <ProductCard
        data={product}
        title={product.title}

@@ -14,7 +14,6 @@ const ItemCard = styled.div`
  height: 100%;
  border: 1px solid black;
  border-radius: 10px;
- filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.532));
  overflow: hidden;
 `;
 

@@ -23,7 +23,7 @@ const CompanyLogo = styled.img`
 const Footer = () => {
  return (
   <footer>
-   <Box p="5" backgroundColor={"#cfe2f3"}>
+   <Box p="5" bgcolor={"primary"}>
     <Grid container spacing={3}>
      <Grid item xs textAlign={"center"}></Grid>
      <Grid item xs={6} textAlign={"center"}>
